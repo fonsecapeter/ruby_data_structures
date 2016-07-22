@@ -7,6 +7,7 @@ This is just to mimic the C array that Ruby does not expose. It is of a fixed wi
 
 ```ruby
 arr = StaticArray.new(8)
+
 i = 0
 while i <= 5
   arr[i] = i
@@ -23,6 +24,7 @@ This is similar to the base Ruby array, which is dynamically resized and has som
 
 ```ruby
 arr = DynamicArray.new
+
 i = 0
 while i <= 9
   arr.push(i)
