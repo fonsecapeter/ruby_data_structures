@@ -40,7 +40,7 @@ arr.unshift(0)
 ```
 
 ### Max Heap
-This is a Max Heap Tree that will take in a dynamic array and immediately sort it into a (max) heap. The max element is accessible in linear time and inserts / extracts will trigger sift-ups/downs to maintain heap ordering.
+This is a Max Heap Tree that will take in a dynamic array and immediately sort it into a (max) heap. The max element is accessible in linear time and inserts/extracts will trigger sift-ups/downs to maintain heap ordering.
 
 ```ruby
 MaxHeap.new([5, 12, 64, 1, 37, 90, 91, 97])
