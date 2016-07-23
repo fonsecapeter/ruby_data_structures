@@ -61,6 +61,17 @@ class DynamicArray
     self
   end
 
+  def to_s
+    output = '['
+    i = 0
+    while i < @length do
+      output += "#{i}"
+      output += ", " if i < @length - 1
+      i += 1
+    end
+    output += "]"
+  end
+
   protected
   attr_accessor :capacity, :store
   attr_writer :length

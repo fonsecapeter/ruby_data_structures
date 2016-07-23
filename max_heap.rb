@@ -1,9 +1,9 @@
-require "byebug"
+require_relative "dynamic_array"
 
 # nearly complete binary tree in which all child nodes <= their parent nodes
 # swap >= for MinHeap
 class MaxHeap
-  def initialize(arr)
+  def initialize(arr = nil)
     @store = arr || DynamicArray.new
     # O(nlog(n)) where n is lenght of store
     build_heap!
@@ -42,7 +42,39 @@ class MaxHeap
     length == 0
   end
 
-  private
+  def to_s
+    output = "#{find_max} \n"
+    children = get_children(0)
+    @tab_size = 3
+    @indent_level = -1
+
+    output += print_children(children, "")
+  end
+
+  def print_children(children, leading)
+    unless children
+      return ""
+    end
+    output = ""
+
+    @indent_level += 1
+    children.keys.each do |key|
+      if key == :l
+        output += "#{leading}└── #{children[:l][:val]} \n"
+        new_leading = leading + "|" + (" " * (@tab_size))
+        output += print_children(get_children(children[:l][:idx]), new_leading)
+      elsif key == :r
+        # leading += ("#{leading}" + (" " * (@tab_size))) * @indent_level
+        output += "#{leading}└── #{children[:r][:val]} \n"
+        new_leading = leading + " " + (" " * (@tab_size))
+        output += print_children(get_children(children[:r][:idx]), new_leading)
+      end
+    end
+    @indent_level -= 1
+    return output
+  end
+
+  protected
 
   # O(nlog(n)) where n is length of store
   def build_heap!

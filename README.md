@@ -1,6 +1,6 @@
 # Ruby Data Structures
 
-Common data structures implemented in Ruby
+Common data structures implemented in Ruby. Each can be visualized with `puts(datastructure.to_s)`
 
 ### Static Array
 This is just to mimic the C array that Ruby does not expose. It is of a fixed width and makes no guarantees other than a contiguous allocation of RAM.
@@ -42,7 +42,7 @@ arr.unshift(0)
 ```
 
 ### Max Heap
-This is a Max Heap Tree that will take in a dynamic array and immediately sort it into a (max) heap. The max element is accessible in linear time and inserts/extracts will trigger sift-ups/downs to maintain heap ordering.
+This is a Max Heap Tree that will take in a dynamic array if given and immediately sort it into a (max) heap. The max element is accessible in linear time and inserts/extracts will trigger sift-ups/downs to maintain heap ordering.
 
 ```ruby
 MaxHeap.new([5, 12, 64, 1, 37, 90, 91, 97])
@@ -61,3 +61,29 @@ MaxHeap.new([5, 12, 64, 1, 37, 90, 91, 97])
 # but underlying DynamicArray looks like:
   [97, 37, 91, 12, 5, 90, 54, 1]
 ```
+
+
+
+
+
+function bSearch(arr, t) {
+  if(arr.length < 1) {
+    return NaN;
+  }
+
+  let mid = parseInt(arr.length/ 2);
+
+  if (arr[mid] === t) {
+    return mid;
+  } else if (arr[mid] > t) {
+    // if (offset === NaN) {
+      return bSearch(arr.slice(0, mid), t);
+  } else {
+    let offset = bSearch(arr.slice(mid + 1), t);
+    if (offset !== NaN) {
+      return (mid + 1 + offset);
+    } else {
+      return NaN;
+    }
+  }
+}
