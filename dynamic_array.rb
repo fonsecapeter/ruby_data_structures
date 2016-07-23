@@ -12,7 +12,7 @@ class DynamicArray
 
   # O(1)
   def [](index)
-    raise "index out of bounds" if index.abs >= @length.abs
+    # raise "index out of bounds" if index.abs >= @length.abs
     @store[
       (@start_idx + index) % @capacity
     ]

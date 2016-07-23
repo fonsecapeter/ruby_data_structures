@@ -63,6 +63,28 @@ class PolyTreeNode
     nil
   end
 
+  # --------------------------------------------------------------------
 
+  def to_s
+    output = "#{value} \n"
+    @tab_size = 3
+    @indent_level = -1
 
+    output += print_children(children, "")
+  end
+
+  def print_children(children, leading)
+    return "" unless children
+    output = ""
+    pipe = "|"
+
+    children.each_with_index do |child, idx|
+      pipe = " " if idx >= children.length - 1
+      output += "#{leading}└── #{child.value} \n"
+      new_leading = leading + pipe + (" " * @tab_size)
+      output += print_children(child.children, new_leading)
+    end
+    @indent_level -= 1
+    return output
+  end
 end
