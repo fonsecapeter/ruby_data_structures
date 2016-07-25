@@ -59,13 +59,14 @@ class MaxHeap
 
     @indent_level += 1
     children.keys.each do |key|
+      joint = "└"
       if key == :l
-        output += "#{leading}└── #{children[:l][:val]} \n"
+        joint = "+" if children[:r]
+        output += "#{leading}#{joint}── #{children[:l][:val]} \n"
         new_leading = leading + "|" + (" " * (@tab_size))
         output += print_children(get_children(children[:l][:idx]), new_leading)
       elsif key == :r
-        # leading += ("#{leading}" + (" " * (@tab_size))) * @indent_level
-        output += "#{leading}└── #{children[:r][:val]} \n"
+        output += "#{leading}#{joint}── #{children[:r][:val]} \n"
         new_leading = leading + " " + (" " * (@tab_size))
         output += print_children(get_children(children[:r][:idx]), new_leading)
       end
