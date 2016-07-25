@@ -61,7 +61,7 @@ class MaxHeap
     children.keys.each do |key|
       joint = "└"
       if key == :l
-        joint = "+" if children[:r]
+        joint = "├" if children[:r]
         output += "#{leading}#{joint}── #{children[:l][:val]} \n"
         new_leading = leading + "|" + (" " * (@tab_size))
         output += print_children(get_children(children[:l][:idx]), new_leading)

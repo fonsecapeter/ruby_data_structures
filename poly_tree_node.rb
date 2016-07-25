@@ -93,7 +93,7 @@ class PolyTreeNode
     children.each_with_index do |child, idx|
       joint = "└"
       pipe = " " if idx >= children.length - 1
-      joint = "+" if idx < children.length - 1
+      joint = "├" if idx < children.length - 1
       output += "#{leading}#{joint}── #{child.value} \n"
       new_leading = leading + pipe + (" " * @tab_size)
       output += print_children(child.children, new_leading)
