@@ -61,29 +61,3 @@ MaxHeap.new([5, 12, 64, 1, 37, 90, 91, 97])
 # but underlying DynamicArray looks like:
   [97, 37, 91, 12, 5, 90, 54, 1]
 ```
-
-
-
-
-
-function bSearch(arr, t) {
-  if(arr.length < 1) {
-    return NaN;
-  }
-
-  let mid = parseInt(arr.length/ 2);
-
-  if (arr[mid] === t) {
-    return mid;
-  } else if (arr[mid] > t) {
-    // if (offset === NaN) {
-      return bSearch(arr.slice(0, mid), t);
-  } else {
-    let offset = bSearch(arr.slice(mid + 1), t);
-    if (offset !== NaN) {
-      return (mid + 1 + offset);
-    } else {
-      return NaN;
-    }
-  }
-}
