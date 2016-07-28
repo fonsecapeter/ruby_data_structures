@@ -36,7 +36,7 @@ class Queue
       output += "#{q}"
       output += ", " if idx < @q.length - 1
     end
-    output += "]"
+    output += "["
   end
 
   def show
